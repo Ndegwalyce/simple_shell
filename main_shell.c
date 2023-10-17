@@ -2,7 +2,8 @@
 
 int main(void)
 {
-	char command [150];
+	char command[150];
+
 	while (true)
 	{
 		prompt_display();

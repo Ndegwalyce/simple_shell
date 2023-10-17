@@ -6,12 +6,12 @@ void execute_command(const char *command) {
         perror("fork");
         exit(EXIT_FAILURE);
     } else if (child_pid == 0) {
-       
+        
         execlp(command, command, (char *)NULL);
         perror("execlp");
         exit(EXIT_FAILURE);
     } else {
-
+        
         wait(NULL);
     }
 }
