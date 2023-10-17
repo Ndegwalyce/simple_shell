@@ -14,7 +14,7 @@ if (fgets(command, size, stdin) == NULL)
 {
 if (feof(stdin))
 {
-shell_print("\n");
+printf("\n");
 exit(EXIT_SUCCESS);
 }
 else
