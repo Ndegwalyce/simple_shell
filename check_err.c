@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * repeated_char - counts the repetitions of a char
+ * repeated_char - counts the repetition of a char
  *
  * @input: input string
  * @i: index
@@ -16,9 +16,9 @@ int repeated_char(char *input, int i)
 }
 
 /**
- * error_sep_op - finds syntax errors
+ * error_sep_op - find syntax errors
  *
- * @input: input string
+ * @input: input a string
  * @i: index
  * @last: last char read
  * Return: index of error. 0 when there are no
@@ -71,7 +71,7 @@ int error_sep_op(char *input, int i, char last)
 /**
  * first_char - finds index of the first char
  *
- * @input: input string
+ * @input: input a string
  * @i: index
  * Return: 1 if there is an error. 0 in other case.
  */
@@ -93,7 +93,7 @@ int first_char(char *input, int *i)
 }
 
 /**
- * print_syntax_error - prints when a syntax error is found
+ * print_syntax_error - prints when syntax error is found
  *
  * @datash: data structure
  * @input: input string

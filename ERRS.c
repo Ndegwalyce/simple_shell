@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- * strcat_cd - function that concatenates the message for cd error
+ * strcat_cd - function that concatenates the message for cd errors
  *
  * @datash: data relevant (directory)
- * @msg: message to print
+ * @msg: message to be print
  * @error: output message
  * @ver_str: counter lines
  * Return: error message

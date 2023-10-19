@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * cmp_env_name - compares env variables names
+ * cmp_env_name - compares the env variables names
  * with the name passed.
  * @nenv: name of the environment variable
  * @name: name passed
@@ -23,8 +23,8 @@ int cmp_env_name(const char *nenv, const char *name)
 }
 
 /**
- * _getenv - get an environment variable
- * @name: name of the environment variable
+ * _getenv - get an environment variables
+ * @name: name of the environment variables
  * @_environ: environment variable
  *
  * Return: value of the environment variable if is found.

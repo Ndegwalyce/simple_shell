@@ -52,7 +52,7 @@ void cd_dot(data_shell *datash)
 }
 
 /**
- * cd_to - changes to a directory given
+ * cd_to - changes to a given directory
  * by the user
  *
  * @datash: data relevant (directories)
@@ -129,7 +129,7 @@ void cd_previous(data_shell *datash)
 }
 
 /**
- * cd_to_home - changes to home directory
+ * cd_to_home - changes to the home directory
  *
  * @datash: data relevant (environ)
  * Return: no return
