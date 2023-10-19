@@ -13,7 +13,7 @@
 #include <errno.h>
 
 #define TOK_BUFSIZE 128
-#define BUFSIZE 1024
+#define CUSTOM_BUFSIZE 1024
 #define TOK_DELIM " \t\r\n\a"
 
 /* Points to an array of pointers to strings called the "environment" */
@@ -75,9 +75,12 @@ typedef struct line_list_s
  */
 typedef struct r_var_list
 {
-	int len_var;
+	/*int len_var;
 	char *val;
-	int len_val;
+	int len_val;*/
+	int var_length;
+        char *value;
+        int value_length;
 	struct r_var_list *next;
 } r_var;
 
@@ -99,20 +102,28 @@ line_list *add_line_node_end(line_list **head, char *line);
 void free_line_list(line_list **head);
 
 /* aux_lists2.c */
-r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
-void free_rvar_list(r_var **head);
+/*r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);*/
+/*void free_rvar_list(r_var **head);*/
+r_var *custom_add_variable_node(r_var **head, int var_length, char *value, int value_length);
+void custom_free_variable_list(r_var **head);
 
 /* aux_str functions */
 char *_strcat(char *dest, const char *src);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
-char *_strchr(char *s, char c);
-int _strspn(char *s, char *accept);
+/*char *_strchr(char *s, char c);
+int _strspn(char *s, char *accept);*/
+char *custom_concatenate_strings(char *destination, const char *source);
+char *custom_copy_string(char *destination, char *source);
+int custom_compare_strings(char *string1, char *string2);
+char *custom_find_character(char *string, char character);
+int custom_length_of_prefix(char *string, char *accepted_bytes);
 
 /* aux_mem.c */
 void _memcpy(void *newptr, const void *ptr, unsigned int size);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
+
 
 /* aux_str2.c */
 char *_strdup(const char *s);
@@ -123,6 +134,7 @@ int _isdigit(const char *s);
 
 /* aux_str3.c */
 void rev_string(char *s);
+void custom_reverse_string(char *string);
 
 /* check_syntax_error.c */
 int repeated_char(char *input, int i);
@@ -132,28 +144,42 @@ void print_syntax_error(data_shell *datash, char *input, int i, int bool);
 int check_syntax_error(data_shell *datash, char *input);
 
 /* shell_loop.c */
-char *without_comment(char *in);
-void shell_loop(data_shell *datash);
+/*char *without_comment(char *in);
+void shell_loop(data_shell *datash);*/
+char *custom_remove_comments(char *input_string);
+void custom_shell_loop(data_shell *shell_data);
 
 /* read_line.c */
-char *read_line(int *i_eof);
+/*char *read_line(int *i_eof);*/
+char *custom_read_line(int *eof_indicator);
 
 /* split.c */
-char *swap_char(char *input, int bool);
+/*char *swap_char(char *input, int bool);
 void add_nodes(sep_list **head_s, line_list **head_l, char *input);
 void go_next(sep_list **list_s, line_list **list_l, data_shell *datash);
 int split_commands(data_shell *datash, char *input);
-char **split_line(char *input);
+char **split_line(char *input);*/
+char *custom_replace_special_chars(char *input, int isSwap);
+void custom_add_separator_and_commands(sep_list **separatorList, line_list **commandList, char *input);
+void custom_go_to_next(sep_list **separatorList, line_list **commandList, data_shell *datash);
+int custom_execute_commands(data_shell *datash, char *input);
+char **custom_split_line(char *input);
 
 /* rep_var.c */
-void check_env(r_var **h, char *in, data_shell *data);
+/*void check_env(r_var **h, char *in, data_shell *data);
 int check_vars(r_var **h, char *in, char *st, data_shell *data);
 char *replaced_input(r_var **head, char *input, char *new_input, int nlen);
-char *rep_var(char *input, data_shell *datash);
+char *rep_var(char *input, data_shell *datash);*/
+void custom_check_environment(r_var **variable_list, char *input_string, data_shell *shell_data);
+int custom_check_variables(r_var **variable_list, char *input_string, char *last_status, data_shell *shell_data);
+char *custom_replace_input(r_var **variable_list, char *input_string, char *new_input, int new_length);
+char *custom_replace_variables(char *input_string, data_shell *shell_data);
 
 /* get_line.c */
-void bring_line(char **lineptr, size_t *n, char *buffer, size_t j);
-ssize_t get_line(char **lineptr, size_t *n, FILE *stream);
+/*void bring_line(char **lineptr, size_t *n, char *buffer, size_t j);
+ssize_t get_line(char **lineptr, size_t *n, FILE *stream);*/
+void assign_buffer(char **lineptr, size_t *line_size, char *line_buffer, size_t buffer_size);
+ssize_t custom_get_line(char **lineptr, size_t *line_size, FILE *stream);
 
 /* exec_line */
 int exec_line(data_shell *datash);
@@ -191,9 +217,12 @@ int (*get_builtin(char *cmd))(data_shell *datash);
 int exit_shell(data_shell *datash);
 
 /* aux_stdlib.c */
-int get_len(int n);
+/*int get_len(int n);*/
 char *aux_itoa(int n);
 int _atoi(char *s);
+int custom_get_length(int n);
+char *custom_itoa(int n);
+int custom_atoi(char *s);
 
 /* aux_error1.c */
 char *strcat_cd(data_shell *, char *, char *, char *);
@@ -213,7 +242,8 @@ char *error_path_126(data_shell *datash);
 int get_error(data_shell *datash, int eval);
 
 /* get_sigint.c */
-void get_sigint(int sig);
+/*void get_sigint(int sig);*/
+void custom_handle_sigint(int signal);
 
 /* aux_help.c */
 void aux_help_env(void);
