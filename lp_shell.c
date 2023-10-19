@@ -63,8 +63,8 @@ void custom_shell_loop(data_shell *shell_data)
                 free(input_string);
                 continue;
             }
-            input_string = custom_replace_variables(input_string, shell_data);
-            continue_loop = custom_execute_commands(shell_data, input_string);
+            input_string = rep_var(input_string, shell_data);
+            continue_loop = split_commands(shell_data, input_string);
             shell_data->counter += 1;
             free(input_string);
         }

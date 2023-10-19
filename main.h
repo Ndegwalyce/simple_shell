@@ -11,6 +11,7 @@
 #include <fcntl.h>
 #include <signal.h>
 #include <errno.h>
+#include <string.h>
 
 #define TOK_BUFSIZE 128
 #define CUSTOM_BUFSIZE 1024
@@ -76,7 +77,7 @@ typedef struct line_list_s
 typedef struct r_var_list
 {
 	int len_var;
-	/*char *val;*/
+	char *val;
 	int len_val;
 	int var_length;
         char *value;
@@ -156,8 +157,8 @@ char *custom_read_line(int *eof_indicator);
 /* split.c */
 /*char *swap_char(char *input, int bool);
 void add_nodes(sep_list **head_s, line_list **head_l, char *input);
-void go_next(sep_list **list_s, line_list **list_l, data_shell *datash);
-int split_commands(data_shell *datash, char *input);*/
+void go_next(sep_list **list_s, line_list **list_l, data_shell *datash);*/
+int split_commands(data_shell *datash, char *input);
 char **split_line(char *input);
 char *custom_replace_special_chars(char *input, int isSwap);
 void custom_add_separator_and_commands(sep_list **separatorList, line_list **commandList, char *input);
