@@ -176,7 +176,7 @@ char *rep_var(char *input, data_shell *datash)
 
 	free(input);
 	free(status);
-	free_line_list(&head);
+	free_rvar_list(&head);
 
 	return (new_input);
 }

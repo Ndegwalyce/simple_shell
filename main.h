@@ -102,8 +102,8 @@ line_list *add_line_node_end(line_list **head, char *line);
 void free_line_list(line_list **head);
 
 /* aux_lists2.c */
-/*r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);*/
-/*void free_rvar_list(r_var **head);*/
+r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
+void free_rvar_list(r_var **head);
 r_var *custom_add_variable_node(r_var **head, int var_length, char *value, int value_length);
 void custom_free_variable_list(r_var **head);
 
@@ -144,8 +144,8 @@ void print_syntax_error(data_shell *datash, char *input, int i, int bool);
 int check_syntax_error(data_shell *datash, char *input);
 
 /* shell_loop.c */
-/*char *without_comment(char *in);
-void shell_loop(data_shell *datash);*/
+/*char *without_comment(char *in);*/
+void shell_loop(data_shell *datash);
 char *custom_remove_comments(char *input_string);
 void custom_shell_loop(data_shell *shell_data);
 
@@ -157,8 +157,8 @@ char *custom_read_line(int *eof_indicator);
 /*char *swap_char(char *input, int bool);
 void add_nodes(sep_list **head_s, line_list **head_l, char *input);
 void go_next(sep_list **list_s, line_list **list_l, data_shell *datash);
-int split_commands(data_shell *datash, char *input);
-char **split_line(char *input);*/
+int split_commands(data_shell *datash, char *input);*/
+char **split_line(char *input);
 char *custom_replace_special_chars(char *input, int isSwap);
 void custom_add_separator_and_commands(sep_list **separatorList, line_list **commandList, char *input);
 void custom_go_to_next(sep_list **separatorList, line_list **commandList, data_shell *datash);
@@ -166,13 +166,13 @@ int custom_execute_commands(data_shell *datash, char *input);
 char **custom_split_line(char *input);
 
 /* rep_var.c */
-/*void check_env(r_var **h, char *in, data_shell *data);
+void check_env(r_var **h, char *in, data_shell *data);
 int check_vars(r_var **h, char *in, char *st, data_shell *data);
 char *replaced_input(r_var **head, char *input, char *new_input, int nlen);
-char *rep_var(char *input, data_shell *datash);*/
-void custom_check_environment(r_var **variable_list, char *input_string, data_shell *shell_data);
+char *rep_var(char *input, data_shell *datash);
+/*void custom_check_environment(r_var **variable_list, char *input_string, data_shell *shell_data);
 int custom_check_variables(r_var **variable_list, char *input_string, char *last_status, data_shell *shell_data);
-char *custom_replace_input(r_var **variable_list, char *input_string, char *new_input, int new_length);
+char *custom_replace_input(r_var **variable_list, char *input_string, char *new_input, int new_length);*/
 char *custom_replace_variables(char *input_string, data_shell *shell_data);
 
 /* get_line.c */
@@ -242,7 +242,7 @@ char *error_path_126(data_shell *datash);
 int get_error(data_shell *datash, int eval);
 
 /* get_sigint.c */
-/*void get_sigint(int sig);*/
+void get_sigint(int sig);
 void custom_handle_sigint(int signal);
 
 /* aux_help.c */
