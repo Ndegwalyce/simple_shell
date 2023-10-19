@@ -116,7 +116,7 @@ char *replaced_input(r_var **head, char *input, char *new_input, int nlen)
 			{
 				for (k = 0; k < indx->len_val; k++)
 				{
-					new_input[i] = indx->val[k];
+					new_input[i] = indx->value[k];
 					i++;
 				}
 				j += (indx->len_var);
@@ -176,7 +176,7 @@ char *rep_var(char *input, data_shell *datash)
 
 	free(input);
 	free(status);
-	free_rvar_list(&head);
+	free_line_list(&head);
 
 	return (new_input);
 }

@@ -75,9 +75,9 @@ typedef struct line_list_s
  */
 typedef struct r_var_list
 {
-	/*int len_var;
-	char *val;
-	int len_val;*/
+	int len_var;
+	/*char *val;*/
+	int len_val;
 	int var_length;
         char *value;
         int value_length;
